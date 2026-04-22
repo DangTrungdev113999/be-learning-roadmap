@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js';
+import type { FuseResultMatch } from 'fuse.js';
 import type { Manifest } from '../types';
 import { getLessonUrl } from './manifest';
 
@@ -67,7 +68,7 @@ export function buildSearchIndex(manifest: Manifest): Fuse<SearchItem> {
 /** Extract a snippet around the first match in searchText */
 export function extractSnippet(
   text: string,
-  matches: readonly Fuse.FuseResultMatch[] | undefined,
+  matches: readonly FuseResultMatch[] | undefined,
   maxLen = 100,
 ): string | null {
   if (!matches) return null;
