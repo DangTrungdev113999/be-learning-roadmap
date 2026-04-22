@@ -3,11 +3,12 @@ import type { Manifest, Lesson, Level, Topic, Subtopic } from '../types';
 // ─── Cached manifest ────────────────────────────────────────────────────────
 
 let cachedManifest: Manifest | null = null;
+const CONTENT_BASE = `${import.meta.env.BASE_URL}content`;
 
 export async function loadManifest(): Promise<Manifest> {
   if (cachedManifest) return cachedManifest;
 
-  const response = await fetch('/content/manifest.json');
+  const response = await fetch(`${CONTENT_BASE}/manifest.json`);
   if (!response.ok) {
     throw new Error('Failed to load manifest: ' + response.statusText);
   }

@@ -22,6 +22,8 @@ import { TableOfContents } from '../components/content/TableOfContents';
 import { SearchModal } from '../components/features/SearchModal';
 import { AiChat } from '../components/features/AiChat';
 
+const CONTENT_BASE = `${import.meta.env.BASE_URL}content`;
+
 /** Find the URL for a lesson by scanning the manifest for its context */
 function findLessonUrl(manifest: Manifest, lesson: LessonType): string | null {
   for (const level of manifest.levels) {
@@ -120,7 +122,7 @@ export function Lesson() {
     setNotFound(false);
 
     // Fetch markdown content
-    fetch(`/content/${result.lesson.filePath}`)
+    fetch(`${CONTENT_BASE}/${result.lesson.filePath}`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to load content');
         return res.text();
