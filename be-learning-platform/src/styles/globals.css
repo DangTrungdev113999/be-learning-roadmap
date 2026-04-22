@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * GitHub Dark theme tokens (default: dark mode)
+ * Light mode activated via .light class on <html>
+ */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-nav: #010409;
+  --border-color: #30363d;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --accent-green: #3fb950;
+  --accent-blue: #58a6ff;
+  --accent-orange: #f0883e;
+  --accent-red: #f85149;
+  --accent-purple: #d2a8ff;
+}
+
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --bg-nav: #ffffff;
+  --border-color: #d0d7de;
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --accent-green: #1a7f37;
+  --accent-blue: #0969da;
+  --accent-orange: #bf8700;
+  --accent-red: #cf222e;
+  --accent-purple: #8250df;
+}
+
+/*
+ * Tailwind v4 theme configuration
+ * Maps CSS custom properties to gh-* utility classes
+ */
+@theme {
+  --color-gh-bg-primary: var(--bg-primary);
+  --color-gh-bg-secondary: var(--bg-secondary);
+  --color-gh-bg-nav: var(--bg-nav);
+  --color-gh-border: var(--border-color);
+  --color-gh-text-primary: var(--text-primary);
+  --color-gh-text-secondary: var(--text-secondary);
+  --color-gh-accent-green: var(--accent-green);
+  --color-gh-accent-blue: var(--accent-blue);
+  --color-gh-accent-orange: var(--accent-orange);
+  --color-gh-accent-red: var(--accent-red);
+  --color-gh-accent-purple: var(--accent-purple);
+
+  --font-mono: "SF Mono", "Fira Code", monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/*
+ * Base styles
+ */
+html {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base, 16px);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  /* smooth scroll handled by JS for speed control */
+}
+
+html.text-base { --font-size-base: 16px; }
+html.text-lg { --font-size-base: 18px; }
+html.text-xl { --font-size-base: 20px; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--border-color);
+}
